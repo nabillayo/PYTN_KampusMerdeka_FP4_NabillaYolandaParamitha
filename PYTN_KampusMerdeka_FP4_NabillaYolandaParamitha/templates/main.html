@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- site css -->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='/css/style.css') }}" media="all"/>
+    <title> Clustering </title>
+</head>
+
+
+</head>
+<body>
+    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Credit Card Clustering</h2>
+                    <form action="{{ url_for('predict') }}" method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="Saldo">Jumlah Saldo Pengguna</label>
+                                    <input class="input--style-1" type="text" placeholder="e.g: 9223.41" name="saldo">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="Pembelian">Jumlah Pembelian yang Dilakukan Pengguna</label>
+                                    <input class="input--style-1" type="text" placeholder="e.g: 88.0" name="pembelian">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="PembelianOneOff">Banyaknya Satu Kali Pembelian yang Dilakukan Pengguna</label>
+                                    <input class="input--style-1" type="text" placeholder="e.g: 34.0" name="pembelianoneoff">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="PembelianAngsuran">Jumlah Pembelian Angsuran yang Dilakukan Pengguna</label>
+                                    <input class="input--style-1" type="text" placeholder="e.g: 99.0" name="pembelianangsuran">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="PenarikanTunai">Jumlah Penarikan Tunai yang Dilakukan Pengguna</label>
+                                    <input class="input--style-1" type="text" name="penarikantunai" placeholder="e.g: 112.42" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="BatasKredit">Jumlah Batas Kredit Pengguna</label>
+                                    <input class="input--style-1" type="text" name="bataskredit" placeholder="e.g: 5500.0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="Pembayaran">Jumlah Pembayaran yang Harus Dibayarkan Pengguna</label>
+                                    <input class="input--style-1" type="text" name="pembayaran" placeholder="e.g: 922.4" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label for="MinimalPembayaran">Jumlah Minimal Pembayaran yang Harus Dibayarkan Pengguna</label>
+                                    <input class="input--style-1" type="text" name="minimalpembayaran" placeholder="e.g: 259.3" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <label for="JangkaWaktu">Jangka Waktu Kredit</label>
+                                        <select name="jangkawaktu">
+                                            <option disabled="disabled" selected="selected">Jangka waktu pengguna kredit</option>
+                                            <option value="6">6 bulan</option>
+                                            <option value="7">7 bulan</option>
+                                            <option value="8">8 bulan</option>
+                                            <option value="9">9 bulan</option>
+                                            <option value="10">10 bulan</option>
+                                            <option value="11">11 bulan</option>
+                                            <option value="12">12 bulan</option>
+                                        </select>
+                                    <div class="select-dropdown"></div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col">
+                                <button class="btn btn-success" type="submit">Prediksi</button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-space">
+                            <div class="col">
+                                <b class="message">{{ prediction_text }}</b>
+                            </div>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
